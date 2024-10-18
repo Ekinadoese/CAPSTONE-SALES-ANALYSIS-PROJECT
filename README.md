@@ -9,7 +9,9 @@ A centralized repository for tracking, analyzing, and visualizing sales performa
 - [TOOLS USED](TOOLS-USED)
 - [DATA CLEANING AND PREPARATION](DATA-CLEANING-AND-PREPARATION)
 - [ANALYSIS AND INSIGHTS](ANALYSIS-AND-INSIGHTS)
-- [CONCLUSION](CONCLUSION) 
+- [CONCLUSION](CONCLUSION)
+- [RECOMMENDATION](RECOMMENDATION)
+- [VISUALIZATION](VISUALIZATION)
 
 ## PROJECT TITLE
 ## **SALES DATA ANALYSIS FROM CAPSTONE** 
@@ -423,3 +425,7 @@ The following conclusions can be drawn from the analysis done
 ## RECOMMENDATION
 
 The business is performing well overall, with a few standout products and a key regional market driving growth. However, opportunities exist to optimize underperforming products, address regional imbalances, and better manage seasonal fluctuations. The company should leverage its top customers, strengthen marketing efforts in weaker regions, and maintain operational efficiency to sustain growth and profitability.
+
+## VISUALIZATION
+
+
