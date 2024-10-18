@@ -380,24 +380,46 @@ GROUP BY [PRODUCT];
 
 ## SUMMARY OF SQL QUERIES 
 
-Query	Code	Result
-Add a new column for sales amount	ALTER TABLE [dbo].[CUSTOMER_DATA] ADD SALES_AMOUNT BIGINT;	Column added successfully
-View all customer data	SELECT * FROM [dbo].[CUSTOMER_DATA];	Returns entire customer data
-Update sales amount by calculating quantity * unit price	UPDATE [dbo].[CUSTOMER_DATA] SET SALES_AMOUNT = quantity * unitprice;	Sales amount updated
-Total revenue from shirts	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Shirt FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'shirt';	2450000
-Total revenue from shoes	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Shoes FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'shoes';	3087500
-Total revenue from hats	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Hat FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'hat';	1587500
-Total revenue from socks	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Socks FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'SOCKS';	912500
-Total revenue from jackets	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Jacket FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'JACKET';	1050000
-Total revenue from gloves	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Gloves FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'GLOVES';	1500000
-Total sales transactions by region (North)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_NORTH FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'NORTH';	62500
-Total sales transactions by region (South)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_SOUTH FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'SOUTH';	122500
-Total sales transactions by region (East)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_EAST FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'EAST';	102500
-Total sales transactions by region (West)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_WEST FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'WEST';	57500
-Highest selling product by sales value	SELECT [PRODUCT], SUM(SALES_AMOUNT) AS HIGHEST_SELLING_PRODUCT FROM [dbo].[CUSTOMER_DATA] GROUP BY [PRODUCT] ORDER BY 2 DESC;	Shoes - 3087500
-Total revenue per product	SELECT [PRODUCT], SUM(SALES_AMOUNT) AS TOTAL_REVENUE_PER_PRODUCT FROM [dbo].[CUSTOMER_DATA] GROUP BY [PRODUCT];	Shoes: 3087500, Jacket: 1050000, Hat: 1587500, Socks: 912500, Shirt: 2450000, Gloves: 1500000
-Monthly sales total for the current year	SELECT * FROM [dbo].[MONTHLY SALES];	Jan: 1000000, Feb: 1500000, Mar: 275000, Apr: 200000, May: 225000, Jun: 750000, Jul: 187500, Aug: 875000
-Top five customers by purchase amount	SELECT [Customer_Id], SUM(SALES_AMOUNT) AS TOP_FIVE_CUSTOMERS FROM [dbo].[CUSTOMER_DATA] GROUP BY [CUSTOMER_ID] ORDER BY 2 DESC;	Cus1488: 29340, Cus1375: 28925, Cus1023: 28205, Cus1059: 28005, Cus1367: 27920
-Percentage sales by region	SELECT REGION, SUM(SALES_AMOUNT) AS TOTAL_SALES, SUM(SALES_AMOUNT) * 100.0 / 10587500 AS PERCENTAGE_SALES_BY_REGION FROM [dbo].[CUSTOMER_DATA] GROUP BY REGION ORDER BY PERCENTAGE_SALES_BY_REGION DESC;	South: 44.16%, East: 23.14%, North: 18.42%, West: 14.29%
-Product with no sale in the last quarter	SELECT [PRODUCT] AS NO_SALE_PRODUCT FROM [dbo].[CUSTOMER_DATA] WHERE SALES_AMOUNT = 0 AND ORDERDATE BETWEEN '2024-09-30' AND '2024-12-31' GROUP BY [PRODUCT];	No result
 ![image](https://github.com/user-attachments/assets/c77537d5-5504-41a5-bfe8-f8315e7f6190)
+
+## FINDINGS FROM THE SQL QUERIES OUTPUT
+
+**Sales Performance by Product**:
+
+- Shoes generate the highest revenue (3,087,500), indicating they are the best-selling product by value.
+- Shirts also perform well with 2,450,000 in revenue, suggesting strong demand.
+- Socks generate the lowest revenue (912,500), possibly indicating a lower selling price or fewer transactions.
+
+**Sales Transactions by Region**:
+
+- South leads in total transactions (122,500) and accounts for 44.16% of total sales by value, making it the most profitable region.
+- West shows the lowest number of transactions (57,500) and 14.29% of sales, suggesting lower engagement or demand.
+
+**Customer Trends**:
+
+- The top five customers have purchase amounts ranging from 27,920 to 29,340, highlighting the contribution of high-value customers to overall sales.
+- Cus1488 has the highest total sales amount (29,340), indicating it could be a key account worth maintaining.
+
+**Seasonality in Sales**:
+
+- Monthly sales data suggests a peak in February (1,500,000), potentially due to seasonal factors or promotions.
+- March (275,000) and July (187,500) show significant drops, suggesting low-demand periods that may need targeted campaigns to boost sales.
+
+**Inventory or Stock Efficiency**:
+
+- All products have recorded sales in the last quarter, as indicated by the absence of any product with zero sales. This suggests efficient stock management without idle inventory.
+
+
+## CONCLUSION
+
+The following conclusions can be drawn from the analysis done 
+
+- The sales analysis indicates that while some products are performing exceptionally well, there is room for growth in specific categories. Strategic marketing efforts could enhance sales performance across the product range, especially focusing on lower-performing products. 
+
+- The analysis also indicates strong sales performance in the South region, with notable opportunities for improvement in the West. Regional marketing strategies should be adjusted to enhance visibility and consumer interest, especially in underperforming areas, to capitalize on overall sales potential.
+
+- It also highlights the importance of understanding sales dynamics over time, particularly in identifying peak periods for marketing and sales efforts. The observed fluctuations suggest that seasonal strategies could be beneficial for optimizing sales throughout the year. Additionally, addressing the causes of low sales in specific months could enhance overall revenue performance.
+
+## RECOMMENDATION
+
+The business is performing well overall, with a few standout products and a key regional market driving growth. However, opportunities exist to optimize underperforming products, address regional imbalances, and better manage seasonal fluctuations. The company should leverage its top customers, strengthen marketing efforts in weaker regions, and maintain operational efficiency to sustain growth and profitability.
