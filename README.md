@@ -82,14 +82,22 @@ Some of the data cleaning and preparation process include:
 ### SQL ###
 
 - Loading the dataset into SQL Server environment to write and validate queries.
-- Writing queries to extract key insights based on the following questions. 
+- Writing queries to extract key insights based on the following questions.
+  
      *Retrieve the total sales for each product category.*
+  
      *Find the number of sales transactions in each region.*
+  
      *Find the highest-selling product by total sales value.*
+  
      *Calculate total revenue per product.*
+  
      *Calculate monthly sales totals for the current year.*
+  
      *Find the top 5 customers by total purchase amount.*
+  
      *Calculate the percentage of total sales contributed by each region.*
+  
      *Identify products with no sales in the last quarter.*
   
   ### Power BI ###
@@ -215,7 +223,181 @@ The overall sales trend reflects a considerable variation, suggesting that while
 
 - Shoes (72,500 units) and Hats (80,000 units) are the most sold products, highlighting their high demand.
 - Jackets show the lowest units sold (27,500), suggesting limited customer preference or seasonal demand.
-Shirt and Gloves both achieved 62,500 units each, indicating steady sales.
+- Shirt and Gloves both achieved 62,500 units each, indicating steady sales.
+
 This analysis supports inventory management by identifying fast-moving products and those that require adjustments in stock levels.
 
 These KPIs offer a holistic view of product performance, regional contributions, and sales trends, helping businesses make data-driven decisions to enhance revenue and operational efficiency.
+
+## RETRIEVING DATA FROM SQL USING QUERIES
+
+Data loaded into SQL were retrieved to gain meaningful insight into sales performance by writing corresponding queries. The below are all queries used to extract data 
+
+''CREATE DATABASE SALES_ANALYSIS_PROJECT;
+
+---e total sales for each product category----
+
+ALTER TABLE  [dbo].[CUSTOMER_DATA]
+ADD SALES_AMOUNT BIGINT 
+
+select * from [dbo].[CUSTOMER_DATA]
+
+UPDATE [dbo].[CUSTOMER_DATA]
+set sales_amount = quantity*unitprice
+
+
+----TOTAL SALES FOR EACH PRODUCT CATEGORIES --------
+
+SELECT SUM(Sales_amount) AS Total_Revenue_Shirt FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'shirt'
+
+---Total_Revenue_Shirt = 2450000 ---
+
+SELECT SUM(Sales_amount) AS Total_Revenue_shoes FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'shoes'
+
+---Total_Revenue_Shoes = 3087500 ---
+
+SELECT SUM(Sales_amount) AS Total_Revenue_hat FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'hat'
+
+---Total_Revenue_hat = 1587500 ---
+
+SELECT SUM(Sales_amount) AS Total_Revenue_SOCKS FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'SOCKS'
+
+---Total_Revenue_hat = 912500 ---
+
+SELECT SUM(Sales_amount) AS Total_Revenue_JACKET FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'JACKET'
+
+---Total_Revenue_hat = 1050000 ---
+
+SELECT SUM(Sales_amount) AS Total_Revenue_GLOVES FROM [dbo].[CUSTOMER_DATA]
+WHERE [PRODUCT]= 'GLOVES'
+
+---Total_Revenue_hat = 1500000 ---
+
+
+----- NUMBER OF SALES TRANSACTIONS IN EACH REGION -----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_NORTH FROM [dbo].[CUSTOMER_DATA]
+WHERE [REGION]= 'NORTH'
+
+----- Total Sales Transactions for North = 62500 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_SOUTH FROM [dbo].[CUSTOMER_DATA]
+WHERE [REGION]= 'SOUTH'
+
+----- Total Sales Transactions for South = 122500 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_EAST FROM [dbo].[CUSTOMER_DATA]
+WHERE [REGION]= 'EAST'
+
+----- Total Sales Transactions for East = 102500 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_WEST FROM [dbo].[CUSTOMER_DATA]
+WHERE [REGION]= 'WEST'
+
+----- Total Sales Transactions for West = 57500 ----
+
+-----  HIGHEST SELLING PRODUCT BY TOTAL SALES VALUE  ----
+
+SELECT [PRODUCT], SUM(SALES_AMOUNT) AS HIGHEST_SELLING_PRODUCT 
+FROM [dbo].[CUSTOMER_DATA]
+GROUP BY [PRODUCT]
+ORDER BY 2 DESC
+
+---- Highest selling product by total sales value = Shoes	3087500
+
+------- TOTAL REVENUE PER PRODUCT -----
+
+SELECT [PRODUCT], SUM(SALES_AMOUNT) AS TOTAL_REVENUE_PER_PRODUCT 
+FROM [dbo].[CUSTOMER_DATA]
+GROUP BY [PRODUCT]
+
+-- total revenue by product ---
+Shoes	3087500
+Jacket	1050000
+Hat	1587500
+Socks	912500
+Shirt	2450000
+Gloves	1500000
+
+-------- MONTHLY SALES TOTAL FOR THE CURRENT YEAR -----
+
+SELECT * FROM [dbo].[MONTHLY SALES]
+
+Jan	1000000
+Feb	1500000
+Mar	275000
+Apr	200000
+May	225000
+Jun	750000
+Jul	187500
+Aug	875000
+
+--------- TOP FIVE CUSTOMERS BY TOTAL PURCHASE AMOUNT -------
+
+SELECT [Customer_Id], SUM(SALES_AMOUNT) AS TOP_FIVE_CUSTOMERS 
+FROM [dbo].[CUSTOMER_DATA]
+GROUP BY [CUSTOMER_ID]
+ORDER BY 2 DESC
+
+Cus1488	29340
+Cus1375	28925
+Cus1023	28205
+Cus1059	28005
+Cus1367	27920
+
+----- PERCENTAGE SALES BY REGION -------
+SELECT
+    REGION, 
+   SUM(SALES_AMOUNT) AS TOTAL_SALES, 
+    SUM(SALES_AMOUNT) * 100.0 / 10587500 AS PERCENTAGE_SALES_BY_REGION
+FROM 
+    [dbo].[CUSTOMER_DATA]
+GROUP BY 
+    REGION
+ORDER BY 
+    PERCENTAGE_SALES_BY_REGION DESC;
+
+	--- % SALES BY REGION ---
+South	4675000	44.1558441558
+East	2450000	23.1404958677
+North	1950000	18.4179456906
+West	1512500	14.2857142857
+
+---- PRODUCT WITH NO SALE IN LAST QUARTER ---
+
+SELECT [PRODUCT] AS NO_SALE_PRODUCT
+FROM [dbo].[CUSTOMER_DATA]
+WHERE SALES_AMOUNT = 0 
+  AND ORDERDATE BETWEEN '2024-09-30' AND '2024-12-31'
+GROUP BY [PRODUCT];
+
+---- NO RESULT -----
+
+## SUMMARY OF SQL QUERIES 
+
+Query	Code	Result
+Add a new column for sales amount	ALTER TABLE [dbo].[CUSTOMER_DATA] ADD SALES_AMOUNT BIGINT;	Column added successfully
+View all customer data	SELECT * FROM [dbo].[CUSTOMER_DATA];	Returns entire customer data
+Update sales amount by calculating quantity * unit price	UPDATE [dbo].[CUSTOMER_DATA] SET SALES_AMOUNT = quantity * unitprice;	Sales amount updated
+Total revenue from shirts	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Shirt FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'shirt';	2450000
+Total revenue from shoes	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Shoes FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'shoes';	3087500
+Total revenue from hats	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Hat FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'hat';	1587500
+Total revenue from socks	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Socks FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'SOCKS';	912500
+Total revenue from jackets	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Jacket FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'JACKET';	1050000
+Total revenue from gloves	SELECT SUM(SALES_AMOUNT) AS Total_Revenue_Gloves FROM [dbo].[CUSTOMER_DATA] WHERE [PRODUCT] = 'GLOVES';	1500000
+Total sales transactions by region (North)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_NORTH FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'NORTH';	62500
+Total sales transactions by region (South)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_SOUTH FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'SOUTH';	122500
+Total sales transactions by region (East)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_EAST FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'EAST';	102500
+Total sales transactions by region (West)	SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_WEST FROM [dbo].[CUSTOMER_DATA] WHERE [REGION] = 'WEST';	57500
+Highest selling product by sales value	SELECT [PRODUCT], SUM(SALES_AMOUNT) AS HIGHEST_SELLING_PRODUCT FROM [dbo].[CUSTOMER_DATA] GROUP BY [PRODUCT] ORDER BY 2 DESC;	Shoes - 3087500
+Total revenue per product	SELECT [PRODUCT], SUM(SALES_AMOUNT) AS TOTAL_REVENUE_PER_PRODUCT FROM [dbo].[CUSTOMER_DATA] GROUP BY [PRODUCT];	Shoes: 3087500, Jacket: 1050000, Hat: 1587500, Socks: 912500, Shirt: 2450000, Gloves: 1500000
+Monthly sales total for the current year	SELECT * FROM [dbo].[MONTHLY SALES];	Jan: 1000000, Feb: 1500000, Mar: 275000, Apr: 200000, May: 225000, Jun: 750000, Jul: 187500, Aug: 875000
+Top five customers by purchase amount	SELECT [Customer_Id], SUM(SALES_AMOUNT) AS TOP_FIVE_CUSTOMERS FROM [dbo].[CUSTOMER_DATA] GROUP BY [CUSTOMER_ID] ORDER BY 2 DESC;	Cus1488: 29340, Cus1375: 28925, Cus1023: 28205, Cus1059: 28005, Cus1367: 27920
+Percentage sales by region	SELECT REGION, SUM(SALES_AMOUNT) AS TOTAL_SALES, SUM(SALES_AMOUNT) * 100.0 / 10587500 AS PERCENTAGE_SALES_BY_REGION FROM [dbo].[CUSTOMER_DATA] GROUP BY REGION ORDER BY PERCENTAGE_SALES_BY_REGION DESC;	South: 44.16%, East: 23.14%, North: 18.42%, West: 14.29%
+Product with no sale in the last quarter	SELECT [PRODUCT] AS NO_SALE_PRODUCT FROM [dbo].[CUSTOMER_DATA] WHERE SALES_AMOUNT = 0 AND ORDERDATE BETWEEN '2024-09-30' AND '2024-12-31' GROUP BY [PRODUCT];	No result
+![image](https://github.com/user-attachments/assets/c77537d5-5504-41a5-bfe8-f8315e7f6190)
