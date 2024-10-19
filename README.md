@@ -325,7 +325,7 @@ GROUP BY [PRODUCT]
 
 Shoes	613380
 Jacket	208230
-Hat	    316195
+Hat	316195
 Socks	180785
 Shirt	485600
 Gloves	296900
@@ -412,15 +412,10 @@ GROUP BY [PRODUCT];
 - South leads in total transactions (24,298) and accounts for 44% of total sales by value, making it the most profitable region.
 - West shows the lowest number of transactions (11,400) and 14% of sales, suggesting lower engagement or demand.
 
-**Customer Trends**:
-
-- The top five customers have purchase amounts ranging from 27,920 to 29,340, highlighting the contribution of high-value customers to overall sales.
-- Cus1488 has the highest total sales amount (29,340), indicating it could be a key account worth maintaining.
-
 **Seasonality in Sales**:
 
-- Monthly sales data suggests a peak in February (1,500,000), potentially due to seasonal factors or promotions.
-- March (275,000) and July (187,500) show significant drops, suggesting low-demand periods that may need targeted campaigns to boost sales.
+- Monthly sales data suggests a peak in February (298,800), potentially due to seasonal factors or promotions.
+- April (39,440) and July (37,200) show significant drops, suggesting low-demand periods that may need targeted campaigns to boost sales.
 
 **Inventory or Stock Efficiency**:
 
