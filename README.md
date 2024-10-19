@@ -246,7 +246,154 @@ These KPIs offer a holistic view of product performance, regional contributions,
 
 Data loaded into SQL were retrieved to gain meaningful insight into sales performance by writing corresponding queries. The below are all queries used to extract data 
 
-''
+''CREATE DATABASE SALES_ANALYSIS_PROJECT;
+
+select * from [dbo].[SALES_TABLE]
+
+
+----TOTAL SALES FOR EACH PRODUCT CATEGORIES --------
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_Shirt FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'shirt'
+
+---Total_Revenue_Shirt = 485600 ---
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_shoes FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'shoes'
+
+---Total_Revenue_Shoes = 613380 ---
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_hat FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'hat'
+
+---Total_Revenue_hat = 316195 ---
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_SOCKS FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'SOCKS'
+
+---Total_Revenue_hat = 180785 ---
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_JACKET FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'JACKET'
+
+---Total_Revenue_hat = 208230 ---
+
+SELECT SUM(AMT_SOLD) AS Total_Revenue_GLOVES FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'GLOVES'
+
+---Total_Revenue_hat = 296900 ---
+
+
+----- NUMBER OF SALES TRANSACTIONS IN EACH REGION -----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_NORTH FROM [dbo].[SALES_TABLE]
+WHERE [REGION]= 'NORTH'
+
+----- Total Sales Transactions for North = 12402 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_SOUTH FROM [dbo].[SALES_TABLE]
+WHERE [REGION]= 'SOUTH'
+
+----- Total Sales Transactions for South = 24298 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_EAST FROM [dbo].[SALES_TABLE]
+WHERE [REGION]= 'EAST'
+
+----- Total Sales Transactions for East = 20361 ----
+
+SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_WEST FROM [dbo].[SALES_TABLE]
+WHERE [REGION]= 'WEST'
+
+----- Total Sales Transactions for West = 11400 ----
+
+-----  HIGHEST SELLING PRODUCT BY TOTAL SALES VALUE  ----
+
+SELECT [PRODUCT], SUM(AMT_SOLD) AS HIGHEST_SELLING_PRODUCT 
+FROM [dbo].[SALES_TABLE]
+GROUP BY [PRODUCT]
+ORDER BY 2 DESC
+
+---- Highest selling product by total sales value = Shoes	613380
+
+------- TOTAL REVENUE PER PRODUCT -----
+
+SELECT [PRODUCT], SUM(AMT_SOLD) AS TOTAL_REVENUE_PER_PRODUCT 
+FROM [dbo].[SALES_TABLE]
+GROUP BY [PRODUCT]
+
+-- total revenue by product ---
+
+Shoes	613380
+Jacket	208230
+Hat	    316195
+Socks	180785
+Shirt	485600
+Gloves	296900
+
+-------- MONTHLY SALES TOTAL FOR THE CURRENT YEAR -----
+
+SELECT MONTH([ORDERDATE]), SUM(AMT_SOLD) AS TOTAL_SALES_FOR_2024
+FROM [dbo].[SALES_TABLE]
+WHERE YEAR([ORDERDATE]) = 2024
+GROUP BY MONTH([ORDERDATE])
+ORDER BY 1 ASC;
+
+----- MONTHLY SALES 2024 -----
+1	198400   JAN
+2	298800   FEB
+3	54780    MAR
+4	39440    APR
+5	44640    MAY
+6	148200   JUNE
+7	37200    JULY
+8	174300   AUG
+
+
+SELECT * FROM [SALES_TABLE]
+
+--------- TOP FIVE CUSTOMERS BY TOTAL PURCHASE AMOUNT -------
+
+SELECT TOP 5 [Customer_Id], SUM(AMT_SOLD) AS TOP_FIVE_CUSTOMERS 
+FROM [dbo].[SALES_TABLE]
+GROUP BY [CUSTOMER_ID]
+ORDER BY 2 DESC
+
+Cus1431	4235
+Cus1495	4235
+Cus1005	4235
+Cus1115	4235
+Cus1302	4235
+
+----- PERCENTAGE SALES BY REGION -------
+SELECT
+    REGION, 
+   SUM(AMT_SOLD) AS TOTAL_SALES, 
+    SUM(AMT_SOLD) * 100.0 / (2101090) AS PERCENTAGE_SALES_BY_REGION
+FROM 
+    [dbo].[SALES_TABLE]
+GROUP BY 
+    REGION
+ORDER BY 
+    PERCENTAGE_SALES_BY_REGION DESC;
+
+	SELECT SUM(AMT_SOLD) FROM [dbo].[SALES_TABLE]
+
+	--- % SALES BY REGION ---
+
+South	927820	44.158984146
+East	485925	23.127281553
+North	387000	18.419011084
+West	300345	14.294723215
+
+---- PRODUCT WITH NO SALE IN LAST QUARTER ---
+
+SELECT [PRODUCT] AS NO_SALE_PRODUCT
+FROM [dbo].[SALES_TABLE]
+WHERE [AMT_SOLD]= 0
+  AND YEAR([ORDERDATE]) = 2024 AND MONTH([ORDERDATE]) > 9
+GROUP BY [PRODUCT];
+
+---- NIL----
 
 ## SUMMARY OF SQL QUERIES 
 
@@ -256,14 +403,14 @@ Data loaded into SQL were retrieved to gain meaningful insight into sales perfor
 
 **Sales Performance by Product**:
 
-- Shoes generate the highest revenue (3,087,500), indicating they are the best-selling product by value.
-- Shirts also perform well with 2,450,000 in revenue, suggesting strong demand.
-- Socks generate the lowest revenue (912,500), possibly indicating a lower selling price or fewer transactions.
+- Shoes generate the highest revenue (613,380), indicating they are the best-selling product by value.
+- Shirts also perform well with 485,600 in revenue, suggesting strong demand.
+- Socks generate the lowest revenue (180,785), possibly indicating a lower selling price or fewer transactions.
 
 **Sales Transactions by Region**:
 
-- South leads in total transactions (122,500) and accounts for 44.16% of total sales by value, making it the most profitable region.
-- West shows the lowest number of transactions (57,500) and 14.29% of sales, suggesting lower engagement or demand.
+- South leads in total transactions (24,298) and accounts for 44% of total sales by value, making it the most profitable region.
+- West shows the lowest number of transactions (11,400) and 14% of sales, suggesting lower engagement or demand.
 
 **Customer Trends**:
 
