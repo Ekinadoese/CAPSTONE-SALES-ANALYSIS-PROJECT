@@ -1,8 +1,6 @@
-![image](https://github.com/user-attachments/assets/8592b778-4b8f-4ab4-87d7-9e56bc490f40)![image](https://github.com/user-attachments/assets/e28756b2-3d6a-4d12-8d2f-d633c27caee6)![image](https://github.com/user-attachments/assets/b7ed076c-fe98-4157-a415-7e492ef3ec59)![image](https://github.com/user-attachments/assets/be98cc80-d38f-45ae-953f-73ba97896ae0)# C
+# CAPSTONE-SALES-ANALYSIS-PROJECT
 
-APSTONE-SALES-ANALYSIS-PROJECTA c
-
-entralized repository for aizing sales performance data, enabling data-driven insights, trend identification, and strategic decision-making using sales data from Capstone
+A centralized repository for aizing sales performance data, enabling data-driven insights, trend identification, and strategic decision-making using sales data from Capstone
 
 ## TABLE OF CONTENT
 - [PROJECT TITLE](PROJECT-TITLE)
