@@ -250,70 +250,109 @@ Data loaded into SQL were retrieved to gain meaningful insight into sales perfor
 
 select * from [dbo].[SALES_TABLE]
 
-
 ----TOTAL SALES FOR EACH PRODUCT CATEGORIES --------
+
+SELECT SUM(Quantity) AS Total_SALES_Shirt FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'shirt'
+
+Total_SALES_Shirt = 12388 ---
+
+SELECT SUM(Quantity) AS Total_SALES_shoes FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'shoes'
+
+Total_SALES_Shoes = 14402 ---
+
+SELECT SUM(Quantity) AS Total_SALES_hat FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'hat'
+
+Total_SALES_hat = 15929 ---
+
+SELECT SUM(Quantity) AS Total_SALES_SOCKS FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'SOCKS'
+
+Total_SALES_socks = 7921 ---
+
+SELECT SUM(Quantity) AS Total_SALES_JACKET FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'JACKET'
+
+Total_SALES_jacket = 5452 ---
+
+SELECT SUM(Quantity) AS Total_SALES_GLOVES FROM [dbo].[SALES_TABLE]
+WHERE [PRODUCT]= 'GLOVES'
+
+Total_SALES_gloves = 12369 ---
+
+----TOTAL REVENUE FOR EACH PRODUCT CATEGORIES --------
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_Shirt FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'shirt'
 
----Total_Revenue_Shirt = 485600 ---
+Total_Revenue_Shirt = 485600 ---
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_shoes FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'shoes'
 
----Total_Revenue_Shoes = 613380 ---
+Total_Revenue_Shoes = 613380 ---
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_hat FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'hat'
 
----Total_Revenue_hat = 316195 ---
+Total_Revenue_hat = 316195 ---
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_SOCKS FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'SOCKS'
 
----Total_Revenue_hat = 180785 ---
+Total_Revenue_socks = 180785 ---
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_JACKET FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'JACKET'
 
----Total_Revenue_hat = 208230 ---
+Total_Revenue_jacket = 208230 ---
 
 SELECT SUM(AMT_SOLD) AS Total_Revenue_GLOVES FROM [dbo].[SALES_TABLE]
 WHERE [PRODUCT]= 'GLOVES'
 
----Total_Revenue_hat = 296900 ---
-
+Total_Revenue_gloves = 296900 ---
 
 ----- NUMBER OF SALES TRANSACTIONS IN EACH REGION -----
 
 SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_NORTH FROM [dbo].[SALES_TABLE]
 WHERE [REGION]= 'NORTH'
 
------ Total Sales Transactions for North = 12402 ----
+Total Sales Transactions for North = 12402 ----
 
 SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_SOUTH FROM [dbo].[SALES_TABLE]
 WHERE [REGION]= 'SOUTH'
 
------ Total Sales Transactions for South = 24298 ----
+Total Sales Transactions for South = 24298 ----
 
 SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_EAST FROM [dbo].[SALES_TABLE]
 WHERE [REGION]= 'EAST'
 
------ Total Sales Transactions for East = 20361 ----
+Total Sales Transactions for East = 20361 ----
 
 SELECT SUM(QUANTITY) AS TOTAL_SALES_TRANSACTIONS_WEST FROM [dbo].[SALES_TABLE]
 WHERE [REGION]= 'WEST'
 
------ Total Sales Transactions for West = 11400 ----
+Total Sales Transactions for West = 11400 ----
+
 
 -----  HIGHEST SELLING PRODUCT BY TOTAL SALES VALUE  ----
 
-SELECT [PRODUCT], SUM(AMT_SOLD) AS HIGHEST_SELLING_PRODUCT 
+SELECT TOP 1 [PRODUCT], SUM(AMT_SOLD) AS HIGHEST_SELLING_PRODUCT_VALUE
 FROM [dbo].[SALES_TABLE]
 GROUP BY [PRODUCT]
 ORDER BY 2 DESC
 
----- Highest selling product by total sales value = Shoes	613380
+-----  HIGHEST SELLING PRODUCT BY TOTAL SALES VOLUME  ----
+
+
+SELECT TOP 1 [PRODUCT], SUM(Quantity) AS HIGHEST_SELLING_PRODUCT_VOLUME 
+FROM [dbo].[SALES_TABLE]
+GROUP BY [PRODUCT]
+ORDER BY 2 DESC
+
+---- Highest selling product by total sales value = Hat	15929
 
 ------- TOTAL REVENUE PER PRODUCT -----
 
@@ -397,13 +436,14 @@ GROUP BY [PRODUCT];
 
 ## SUMMARY OF SQL QUERIES 
 
-[SQL TABLE.xlsx](https://github.com/user-attachments/files/17446950/SQL.TABLE.xlsx)
+[SQL TABLE.xlsx](https://github.com/user-attachments/files/17511798/SQL.TABLE.xlsx)
 
 ## FINDINGS FROM THE SQL QUERIES OUTPUT
 
 **Sales Performance by Product**:
 
-- Shoes generate the highest revenue (613,380), indicating they are the best-selling product by value.
+- Shoes generated the highest revenue (613,380), indicating it is the best-selling product by value.
+- Hat generated the highest sales volume (15929), indicating it as the best-selling product by volume.
 - Shirts also perform well with 485,600 in revenue, suggesting strong demand.
 - Socks generate the lowest revenue (180,785), possibly indicating a lower selling price or fewer transactions.
 
