@@ -1,6 +1,6 @@
 # CAPSTONE-SALES-ANALYSIS-PROJECT
 
-A centralized repository for aizing sales performance data, enabling data-driven insights, trend identification, and strategic decision-making using sales data from Capstone
+A centralized repository for analizing sales performance data, enabling data-driven insights, trend identification, and strategic decision-making using sales data from Capstone
 
 ## TABLE OF CONTENT
 - [PROJECT TITLE](PROJECT-TITLE)
