@@ -492,3 +492,158 @@ To maintain a competitive edge, implementing real-time sales dashboards using Po
 Lastly, developing a robust feedback loop with customers will provide valuable insights into customer satisfaction and preferences. Leveraging this information can help make informed adjustments to product offerings, enhance customer service, and build lasting loyalty. Implementing surveys, gathering post-purchase feedback, and analyzing online reviews will provide actionable insights, fostering a customer-centric approach to future product development and marketing.
 
 In summary, by concentrating resources on high-performing regions and products, optimizing underperforming areas, and adopting data-driven tools,sales can become more efficient, growth can be assured, and market position can be strengthened. These recommendations aim to maximize revenue while maintaining high customer satisfaction and operational efficiency.
+
+## VISUALIZATION
+
+### FIGURES AT A GLANCE
+
+**TOTAL SALES**
+
+![BI SALES FIG SUMMARY](https://github.com/user-attachments/assets/65c151fd-3e45-4519-8e3a-c6e628f66dbd)
+
+**2023 SALES**
+
+![BI SALES FIG 2023](https://github.com/user-attachments/assets/67d4442b-6518-4305-b406-be7502870462)
+
+![BI SALES REVENUE 2023](https://github.com/user-attachments/assets/35ce9fb1-211b-49a8-8b30-56d23b788024)
+
+
+**2024 SALES**
+
+![BI SALES FIG 2024](https://github.com/user-attachments/assets/7985f697-6582-4bf1-9f69-48121e7ce8f7)
+
+![BI SALES REVENUE 2024](https://github.com/user-attachments/assets/415f1af1-886d-403b-b653-3ed8e6ba9fb5)
+
+### MONTHLY TRENDS
+
+**TOTAL MONTHLY SALES TREND**
+
+![BI SALES MONTH TREND](https://github.com/user-attachments/assets/4acd4a85-4b57-4b70-8a46-2e33551b75f6)
+
+- 2023 MONTHLY SALES TREND
+
+![BI SALES MONTH TREND 2023](https://github.com/user-attachments/assets/475f7b8a-b47e-4852-b7ad-15990d1a5551)
+
+- 2024 MONTHLY SALES TREND
+
+![BI SALES MONTH TREND 2024](https://github.com/user-attachments/assets/99c0005a-705d-4fa6-b96f-b091902ccfb9)
+
+### MONTHLY TREND BY REGION 
+
+**NORTH**
+
+- 2023
+
+![BI NORTH 2023 BY MONTH](https://github.com/user-attachments/assets/1ab0fccf-6823-4a3d-8937-3de4cc5d6097)
+
+- 2024
+
+![BI NORTH 2024 BY MONTH](https://github.com/user-attachments/assets/b810e57e-c6f7-4e3c-b534-2384de83fafa)
+
+**SOUTH**
+
+- 2023
+  
+![BI SOUTH 2023 BY MONTH](https://github.com/user-attachments/assets/bd883425-152d-4561-8220-fc04d4695367)
+
+- 2024
+
+![BI SOUTH 2024 BY MONTH](https://github.com/user-attachments/assets/efdfdc86-bcb8-4c29-9a5e-ee68b67160a4)
+
+**EAST**
+
+- 2023
+
+![BI EAST 2023 BY MONTH](https://github.com/user-attachments/assets/dab3168f-c9bd-438b-acea-7ba590c58a13)
+
+- 2024
+
+![BI EAST 2024 BY MONTH](https://github.com/user-attachments/assets/5a4522e5-3b43-4455-a11e-e6b0e6072b5f)
+
+**WEST**
+
+- 2023
+
+![BI WEST 2023 BY MONTH](https://github.com/user-attachments/assets/b547af0b-48c4-4128-8eb2-ec2c8668681f)
+
+- 2024
+
+![BI WEST 2024 BY MONTH](https://github.com/user-attachments/assets/e3d0d581-4654-4111-90d1-85c1af6f4094)
+
+### MONTHLY TREND BY PRODUCT
+
+**SHIRT**
+
+- 2023
+
+![BI SHIRT 2023 BY MONTH](https://github.com/user-attachments/assets/d85242ae-f7c1-42c9-8969-f6fa380a9939)
+
+- 2024
+
+![BI SHIRT 2024 BY MONTH](https://github.com/user-attachments/assets/7bcb44f0-0270-412c-ae75-e4c194c3b830)
+
+**HAT**
+
+- 2023
+
+  ![BI HAT 2023 BY MONTH](https://github.com/user-attachments/assets/44fa05eb-8ad9-412f-8b96-9a90faa10848)
+
+- 2024
+
+  ![BI HAT 2024 BY MONTH](https://github.com/user-attachments/assets/e295a444-79a0-4ad3-8b0a-9b8e565a1910)
+
+**JACKET**
+
+- 2023
+
+  ![BI JACKET 2023 BY MONTH](https://github.com/user-attachments/assets/45022f7e-582c-4eb5-8105-5159a97aa942)
+
+- 2024
+
+  ![BI JACKET 2024 BY MONTH](https://github.com/user-attachments/assets/e2e04723-7308-4efb-9dc0-12c0a3a6ee60)
+
+**SOCKS**
+
+- 2023
+
+![BI SOCKS 2023 BY MONTH](https://github.com/user-attachments/assets/7e3535f0-47da-4535-b413-50dcb1df313a)
+
+- 2024
+
+  ![BI SOCKS 2024 BY MONTH](https://github.com/user-attachments/assets/9677bcf7-3096-4aa4-a83a-c2b4a8ab45ec)
+
+**SHOES**
+
+- 2023
+
+  ![BI SHOES 2023 BY MONTH](https://github.com/user-attachments/assets/b253fb97-4838-4437-af17-f4b9fa345e5e)
+
+- 2024
+
+  ![BI SHOES 2023 BY MONTH](https://github.com/user-attachments/assets/ca652c2a-da8c-4ff1-87b8-f7526d392cad)
+
+**GLOVES**
+
+- 2023
+
+  ![BI GLOVES 2023 BY MONTH](https://github.com/user-attachments/assets/cd3b12c2-775e-44d1-9e44-b32dc75f7723)
+
+- 2024
+  
+![BI GLOVES 2024 BY MONTH](https://github.com/user-attachments/assets/bd625760-f41f-4f3e-969a-7c28d1717ab9)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
